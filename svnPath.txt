@@ -14,4 +14,6 @@ http://xiebin@192.168.121.3/svn/r96\
 \expnd0\expndtw0\kerning0
 lipo -create /Users/.../RKPlatform.framework/RKPlatform /Users/.../RKPlatform.framework/RKPlatform -output /Users/.../Desktop/RKPlatform\
 \
- Other C Flags -fembed-bitcode}
+ Other C Flags -fembed-bitcode\
+ \
+nslog("swift ,, smart ,, what")}

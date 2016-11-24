@@ -5,10 +5,7 @@
 \deftab722
 \pard\pardeftab722\sl360\slmult1\pardirnatural\partightenfactor0
 
-\f0\fs30 \cf0 byword
-\f1 \'a1\'a3\'d3\'a6\'b8\'c3\'d3\'d0\'b1\'e4\'bb\'af\'b0\'a1\'a1\'a3\'d3\'d0\'d2\'aa\'cc\'e1\'bd\'bb\'b5\'c4\'b0\'a1\'a1\'a3
-\f0 \
-\
+\f0\fs30 \cf0 \
 http://xiebin@192.168.121.3/svn/r96\
 \
 \expnd0\expndtw0\kerning0
@@ -16,4 +13,20 @@ lipo -create /Users/.../RKPlatform.framework/RKPlatform /Users/.../RKPlatform.fr
 \
  Other C Flags -fembed-bitcode\
  \
-nslog("swift ,, smart ,, what")}
+ find . -name *.plist\
+ssh root@192.168.1.56\
+cd /var/mobile/Containers/Bundle/Application/\
+scp -rp root@192.168.1.56:/var/mobile/Containers/Bundle/Application/6F981D37-BCFD-4FD5-A044-3AA843951107/
+\f1 \'d0\'d0\'d1\'b6\'cd\'a8
+\f0 .app/Info.plist /Users/xiebin\
+\
+document.write("\
+\
+My First JavaScript\
+\
+");\
+alert("1")\
+alert(JSON.stringify())\
+/Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash 4-52.crash app.dSYM > crash.txt\
+\
+scp -rp root@114.215.242.105:/data/soft/DataCollector_new/bin/logs/others /Users/xiebin}

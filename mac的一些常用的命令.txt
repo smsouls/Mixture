@@ -10,7 +10,7 @@
 \f0\b0 **\
 
 \f1 \'cf\'d4\'ca\'be\'a3\'ba
-\f0 defaults write com.apple.finder AppleShowAllFiles -bool true\
+\f0 defaults write com.apple.finder AppleShowAllFiles -bool true ; killall Finder\
 
 \f1 \'d2\'fe\'b2\'d8\'a3\'ba
-\f0 defaults write com.apple.finder AppleShowAllFiles -bool false}
+\f0 defaults write com.apple.finder AppleShowAllFiles -bool false ; killall Finder}

@@ -3,20 +3,20 @@ import urlparse
 import urllib2
 import time
 import datetime
-import robotparse
+import robotparser
 from downloader import Downloader
 
 def link_crawler(seed_url, link_regex = None, delay = 5, max_depath = 1, max_urls = -1, user_agent = 'wswp', proxies = None, num_retries = 1, scrap_callback = None, cache = None):
 	crawl_queue = [seed_url]
 	seen = {seed_url: 0}
 	num_urls = 0
-	rp = self.get_robots(seed_url)
-	D = Downloader(delay = delay, user_agent=user_agent, proxies = proxies, num_retries =num_retries, cache = cache)
+	rp = get_robots(seed_url)
+	D = Downloader(delay = delay, user_agent = user_agent, proxies = proxies, num_retries = num_retries, cache = cache)
 
 	while crawl_queue:
 		url = crawl_queue.pop()
 		depth = seen[url]
-		if re.can_fetch(user_agent, url):
+		if rp.can_fetch(user_agent, url):
 			html = D(url)
 			links = []
 			if scrap_callback:
@@ -27,11 +27,11 @@ def link_crawler(seed_url, link_regex = None, delay = 5, max_depath = 1, max_url
 					links.extend(link for link in get_links(html) if re.match(link_regex, link))
 
 				for link in links:
-					link = self.normalize(link)
+					link = normalize(seed_url, link)
 					if link not in seen:
 						seen[link] = depth + 1
 
-						if self.same_domain(seed_url, link):
+						if same_domain(seed_url, link):
 							crawl_queue.append(link)
 
 			num_urls += 1
@@ -42,14 +42,14 @@ def link_crawler(seed_url, link_regex = None, delay = 5, max_depath = 1, max_url
 
 
 def get_robots(url):
-	rp = robotparse.RobotFileParse()
+	rp = robotparser.RobotFileParser()
 	rp.set_url(urlparse.urljoin(url, '/robots.txt'))
 	rp.read()
 	return rp
 
 
 def get_links(html):
-	webpage_regex = re.complie('<a[^>]+href=["\'](.*?)["\'], re.IGNORECASE)
+	webpage_regex = re.compile('<a[^>]+href=["\'](.*?)["\']', re.IGNORECASE)
 	return webpage_regex.findall(html)
 
 

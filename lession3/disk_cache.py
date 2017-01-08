@@ -1,3 +1,4 @@
+#coding=utf-8 
 import os
 import re
 import urlparse
@@ -26,8 +27,8 @@ class DiskCache:
 		if os.path.exists(path):
 			with open(path, 'rb') as fp:
 				data = fp.read()
-				if self.components:
-					data = zlib.decomress(data)
+				if self.compress:
+					data = zlib.decompress(data)
 					result, timestamp = pickle.loads(data)
 				if self.has_expired(timestamp):
 					raise KeyError(url + ' has expired')
@@ -44,7 +45,7 @@ class DiskCache:
 			os.makedirs(folder)
 
 		data = pickle.dumps((result, datetime.utcnow()))
-		if self.decomress:
+		if self.compress:
 			data = zlib.compress(data)
 			with open(path, 'wb') as fp:
 				fp.write(data)
@@ -60,7 +61,7 @@ class DiskCache:
 			pass
 
 
-	def url_to_path(url):
+	def url_to_path(self, url):
 		"""获取一个文件的URL"""
 		components = urlparse.urlsplit(url)
 		path = components.path
@@ -71,7 +72,7 @@ class DiskCache:
 
 		filename = components.netloc + path + components.query
 
-		filename = re.sub('[^0-9z-zA-Z\-.,;_]', '_', filename)
+		filename = re.sub('[^/0-9z-zA-Z\-.,;_]', '_', filename)
 		return os.path.join(self.cache_dir, filename)
 
 

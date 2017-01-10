@@ -30,7 +30,7 @@ class Downloader:
 			except KeyError:
 				pass
 			else:
-				if num_retries > 0 and 500 <= result['code'] < 600:
+				if self.num_retries > 0 and 500 <= result['code'] < 600:
 					result = None
 
 		if result is None:
@@ -40,7 +40,7 @@ class Downloader:
 			result = self.download(url, headers, proxy = proxy, num_retries = self.num_retries)
 			if self.cache: 
 				self.cache[url] = result
-	return result['html']
+		return result['html']
 
 
 	def  download(self, url, headers, proxy, num_retries, data = None):

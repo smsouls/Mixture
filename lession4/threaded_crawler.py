@@ -6,13 +6,21 @@ from downloader import Downloader
 SLEEP_TIME = 1
 
 def normalize(seed_url, url):
-	link, _ = urlparse.urldefrag(link)
+	link, _ = urlparse.urldefrag(url)
 	return urlparse.urljoin(seed_url, link)
 
 
 def threaded_crawler(seed_url, delay = 5, cache = None, scrape_callback = None, user_agent = 'wswp', proxies = None, num_retries = 1, max_threads = 10,timeout = 60):
 	crawl_queue = [seed_url]
 	seen = set([seed_url])
+	linksa = scrape_callback(seed_url, '')
+	for link in linksa:
+		print link
+		link = normalize(seed_url, link)
+		if link not in seen:
+			seen.add(link)
+			crawl_queue.append(link)
+	
 	D = Downloader(cache = cache, delay = delay, user_agent = user_agent, proxies = proxies, num_retries = num_retries, timeout = timeout)
 
 	def process_queue():
@@ -27,10 +35,10 @@ def threaded_crawler(seed_url, delay = 5, cache = None, scrape_callback = None, 
 					try:
 						links = scrape_callback(url, html) or []
 					except Exception as e:
-						print 'Error in callback for: {}: {}'.format(url, e)
+						pass
+						# print 'Error in callback for: {}: {}'.format(url, e)
 					else:
 						for link in links:
-							print link
 							link = normalize(seed_url, link)
 							if link not in seen:
 								seen.add(link)

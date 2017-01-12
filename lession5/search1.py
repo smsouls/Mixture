@@ -7,14 +7,15 @@ import mongo_cache
 FIELDS = ('area', 'population', 'iso', 'country', 'capital', 'continent', 'tld', 'currency_code', 'currency_name', 'phone', 'postal_code_format', 'postal_code_regex', 'languages', 'neighbours')
 
 def main():
-	template_url = 'http://example.webscraping.com/ajax/search.json?page={}&pagesize=10&search_term={}'
+	template_url = 'http://example.webscraping.com/ajax/search.json?page={}&page_size=10&search_term={}'
 	countries = set()
 	download = downloader.Downloader(mongo_cache.MongoCache())
 
 	for letter in string.lowercase:
 		page = 0
 		while True:
-			html = download(template_url.fromat(page, letter))
+			html = download(template_url.format(page, letter))
+			print html
 			try:
 				ajax = json.loads(html)
 			except ValueError as e:

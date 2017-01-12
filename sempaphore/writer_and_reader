@@ -1,0 +1,68 @@
+
+#读操作优先，如果共享区一直有读操作则会导致写操作无法完成（写操作饿死)
+int count = 0
+sempaphore mutex = 1
+sempaphore rw = 1
+
+writer() {
+	while(1) {
+		P(rw)
+		"进行写操作"
+		V(rw)
+	}
+}
+
+reader() {
+	while(1) {
+		P(mutex)
+		if (count == 0) {
+		P(rw)
+		}
+		count++
+		V(mutex)
+		"进行读操作"
+		P(mutex)
+		count--
+		if (count == 0) {
+		V(rw)
+		}
+		V(mutex)
+
+	}
+}
+
+#写操作优先，当有写操作请求的时候，当有读操作请求将拒绝
+int count = 0
+sempaphore mutex = 1
+sempaphore rw = 1
+sempaphore w = 1
+
+writer() {
+	P(w)
+	P(rw)
+	"进行写操作"
+	V(rw)
+	V(w)
+}
+
+reader() {
+	P(w)
+	P(mutex)
+	if (count == 0) {
+	P(rw)
+	}
+	count++
+	V(mutex)
+	V(w)
+	"进行读操作"
+	P(mutex)
+	count--
+	if (count == 0) {
+	V(rw)
+	}
+	V(mutex)
+
+
+
+}
+

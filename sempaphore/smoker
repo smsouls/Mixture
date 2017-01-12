@@ -1,0 +1,45 @@
+
+int random
+semaphore offer1 = 0
+semaphore offer2 = 0
+semaphore offer3 = 0
+
+producer() {
+	while(1) {
+	random = random()
+	random = rand%3
+	if (random == 0) {
+	V(offer1)
+	}else if (random == 1) {
+	V(offer2)
+	}else if (random == 2) {
+	V(offer3)
+	}
+	}
+
+	P(finish)
+}
+
+consumer1() {
+	while(1) {
+	P(offer1)
+	"吸烟"
+	V(finish)
+	}
+}
+
+consumer2() {
+	while(1) {
+	P(offer2)
+	"吸烟"
+	V(finish)
+	}
+}
+
+consumer3() {
+	while(1) {
+	P(offer3)
+	"吸烟"
+	V(finish)
+	}
+}

@@ -1,0 +1,36 @@
+
+semaphore chopstick[5] = [1,1,1,1,1]
+
+Pi() {
+	while(1) {
+	P(chopstick[i])
+	P(chopstick[(i+1)%5])
+	"夹饭吃"
+	V(chopstick[i])
+	V(chopstick[(i+1)%5])
+	}
+}
+
+#如果五个哲学家同时，拿起左边的筷子那么导致死锁。
+
+#避免死锁
+#1.一次之多只能只有四个科学家，因为5只筷子给四个人，至少有一个人的筷子是大于2只得
+#2.仅当哲学家两边筷子都能用的时候才运行拿起筷子，（其实这句话有歧义）
+#3.对哲学家进行编号，奇数的只能左边的。偶数的只能拿右边的
+
+
+semaphore chopstick[5] = [1,1,1,1,1]
+semaphore mutex = 1
+
+Pi() {
+	while(1) {
+	P(mutex)  //其实我觉得是保证了只有一个人在拿筷子
+	P(chopstick[i])
+	P(chopstick[(i+1)%5])
+	V（mutex)
+	"夹饭吃"
+	V(chopstick[i])
+	V(chopstick[(i+1)%5])
+
+	}
+}

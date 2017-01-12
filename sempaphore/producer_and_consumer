@@ -1,0 +1,73 @@
+
+#较为简单的生产消费者模型
+semaphore mutex = 1
+semaphore empty = n
+semaphore full = 0
+
+producer() {
+	while(1) {
+	P(empty)
+	P(mutex)
+	"进行生产"
+	V(mutex)
+	V(full)
+	}
+}
+
+consumer() {
+	while(1) {
+	P(full)
+	P(mutex)
+	"进行消费"
+	V(mutex)
+	V(empty)
+	}
+}
+
+#爸爸专向盘子中放苹果，妈妈专向盘子中放橘子，儿子专等吃盘子中的橘子，女儿专等吃盘子中的苹果。
+
+semaphore mutex = 1
+semaphore empty = n
+semaphore full1 = 0
+semaphore full2 = 0
+
+producerdad() {
+	while(1) {
+	P(empty)
+	P(mutex)
+	"生产苹果"
+	V(mutex)
+	V(full2)
+	}
+}
+
+producermom() {
+	while(1) {
+	P(empty)
+	P(mutex)
+	"生产橘子"
+	V(mutex)
+	V(full1)
+	}
+}
+
+consumerson() {
+	while(1) {
+	P(full1)
+	P(mutex)
+	"吃橘子"
+	V(mutex)
+	V(full1)
+	}
+}
+
+consumerdaughter() {
+	while(1) {
+	P(full2)
+	P(mutex)
+	"吃苹果"
+	V(mutex)
+	V(full2)
+	}
+}
+

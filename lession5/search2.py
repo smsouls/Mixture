@@ -5,9 +5,10 @@ import downloader
 
 def main():
 	writer = csv.writer(open('countries.csv', 'w'))
-	D = downloader.Download()
+	D = downloader.Downloader()
 	html = D('http://example.webscraping.com/ajax/search.json?page=0&page_size=1000&search_term=.')
 	ajax = json.loads(html)
+	print ajax
 	for record in ajax['records']:
 		writer.writerow([record['country']])
 

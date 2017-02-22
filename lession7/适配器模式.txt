@@ -1,0 +1,53 @@
+适配器模式
+
+适用环境：
+1.想使用一个已经存在的类，但是它提供的方法和你所要求的方法不同。
+2.两个类做的事情类似，但是具有不同的接口的时候。
+
+设计角色：
+1.目标角色 (Target)
+2.源角色 (Adapee)
+3.适配器角色 (Adaper)
+
+
+pulbic interface Target
+{
+	void op2();
+}
+
+public Adaptee
+{
+	void op1();
+}
+
+class Adapter extends Adaptee implements Target
+{
+	void op2()
+	{
+		adaptee.op1();
+	}
+}
+
+
+对象适配器
+public interface Target
+{
+	void op2();
+}
+
+public Adaptee
+{
+	void op1();
+}
+
+class Adapter implements Target
+{
+	public Adaptee(Adaptee adaptee)
+	{
+		adaptee = adaptee;
+	}
+
+	void op2();
+} 
+
+

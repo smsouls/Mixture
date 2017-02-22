@@ -1,0 +1,52 @@
+外观模式
+
+优点：facade模式不仅简化了整个组件系统的接口，同时对于组件内部与外部客户程序来说，从某种程度上来说也达到一种解耦
+，内部子系统的变化不会影响到调用的facade定义的接口。
+
+角色：
+1.Client:客户端程序
+2.Facade:对外的统一入口，即外观对象
+3.SubSystemA:子系统A
+4.SubSystemB:子系统B
+
+internal class Engine
+{
+	void EngineWork();
+	void EngineStop();
+}
+
+internal class Wheel
+{
+	void WheelCircumrotate();
+	void WheelStop();
+}
+
+internal class Body
+{
+	void body();
+}
+
+
+class CarFacade
+{
+	void run()
+	{
+		body();
+		EngineWork();
+		WheelCircumrotate();
+	}
+
+
+	void stop()
+	{
+		body();
+		EngineStop();
+		WheelStop();
+	}
+}
+
+class Client
+{
+	CarFacade car = new CarFacade();
+	car.run();
+}

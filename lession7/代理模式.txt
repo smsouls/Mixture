@@ -1,0 +1,47 @@
+代理模式
+
+使用场景：
+当无法直接访问某个对象时候，可以通过一个代理对象来间接访问。为了保证客户端使用的
+透明性，委托对象和代理对象需要实现相同的接口。
+
+角色：
+1.Subject:抽象角色
+2.Proxy:代理角色
+3.RealSubject:真实角色
+
+
+public class BeautifulGirl
+{
+	public BeautifulGirl(String name)
+	{
+		name = name;
+	}	
+}
+
+public interface GiveGift
+{
+	void giveFlowers();
+	void giveBooks();
+}
+
+public class You implements GiveGift
+{
+	void giveBook();
+	void giveFlowers();
+}
+
+public class Proxy implements GiveGift
+{
+	You you;
+	void giveBook()
+	{
+		you.giveBook();
+	}
+
+	void giveFlowers()
+	{
+		you.giveFlowers();
+	}
+}
+
+

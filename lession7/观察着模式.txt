@@ -1,0 +1,56 @@
+观察着模式
+
+使用场景：定义对象的一对多的关系，使得每当一个对象状态发生改变，其相关依赖的对象皆得到通知
+并自动更新。又叫发布订阅模式。
+
+角色：
+1.Subject:目标
+2.ConcreteSubject:具体的目标
+3.Observer:观察者
+4.ConcreteObserver:具体的目标观察者
+
+abstract class Subject
+{
+	obs = new Vector();
+
+	void addObs(Observer o)
+	{
+		obs.add(o);
+	}
+
+	void delObs(Observer o)
+	{
+		obs.remove(o);
+	}
+
+	void notifyObserver()
+	{
+		for (o in obs)
+		{
+			o.update();
+		}
+	}
+
+	public abstract void doSomething();
+}
+
+class ConcreteSubject extends Subject
+{
+	public void doSomething()
+	{
+		notifyObserver();
+	}
+}
+
+interface Observer
+{
+	void update();
+}
+
+class ConcreteObserver1 implements Observer
+{
+	void update
+	{
+		"get Info";
+	}
+}

@@ -1,0 +1,77 @@
+建造者模式
+
+作用：将一个复杂对象的构建和它的表示分离，客户端压根不用知道复杂对象的内部组成部分与装配方式，只需要知道所需建造者的
+类型即可。
+
+角色：
+1.Builder:抽象的建造者
+2.ConcreteBuilder:具体的建造者
+3.Director:指挥者
+4.Product:产品角色
+
+class Product
+{
+	boolean mKnowMath;
+	boolean mKnowDesign;
+
+	boolean ismKnowMath()
+	{
+		return mKnowMath;
+	}
+
+	void setmKnowMath(boolean mKnowMath)
+	{
+		mKnowMath = mKnowMath;
+	}
+
+	boolean ismKnowDesign()
+	{
+		return mKnowDesign;
+	}
+
+	void setmKnowDesign(boolean mKnowDesign)
+	{
+		mKnowDesign = mKnowDesign;
+	}
+
+	void show
+	{
+
+	}
+}
+
+
+abstract class Builder
+{
+	abstract void buildKnowMath(boolean arg);
+	abstract void buildKnowDesign(boolean arg);
+
+	public abstract Product getProduct();
+}
+
+class ConcreteBuilderA extends Builder
+{
+	private Product product = new Product();
+
+	public Product getProduct()
+	{
+		return product;
+	}
+
+	void buildKnowMath(boolean arg)
+	{
+		product.mKnowMath = arg;
+	}
+}
+
+
+public class Director
+{
+	Builder builder = new ConcreteBuilder();
+
+	Public Product getAProduct()
+	{
+		builder.buildKnowMath(Yes);
+		return builder.getProduct();
+	}
+}

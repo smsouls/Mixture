@@ -1,0 +1,32 @@
+享元模式
+
+优点：避免在创造相同对象的时候产生不必要的大量的资源消耗
+
+Strigng a = "abc";
+String b = "abc";
+
+在常量池中的同一个字符串"abc"
+
+角色：
+1.Flyweight:抽象享元类
+2.ConcreteFlyweight:具体享元类
+3.UnsharedConcreteFlyweight:非共享具体享元类
+4.FlyweightFactory:享元工厂类
+
+public class FlyweightFactory
+{
+	private Map<Character, Flyweight> files = new HashMap<Character, Flyweight>();
+
+	public Flyweight factory(Character state)
+	{
+		Flyweight fly = files.get(state);
+
+		if (fly == null)
+		{
+			fly = new ConcreateFlyweight(state);
+			files.put(state, fly);
+		}
+
+		return fly;
+	}
+}

@@ -1,0 +1,76 @@
+
+工厂模式的目的：将一个对象的创建和使用分离，创建的时候不需要考虑复杂的初始化参数
+
+简单工厂模式有三个元素：
+1：抽象的产品类。
+2：具体的产品类。
+3：具体的工厂类。
+
+缺点：每次新添加类需要改写工厂类。
+
+Factory
+{
+	Product crate(String str)
+	{
+		if (str == productA)
+		{
+			return new ProductA();
+		}
+	}
+}
+
+
+工厂模式有四个元素：
+1：抽象的产品类。
+2：具体的产品类。
+3：抽象的工厂类。
+4：具体的工厂类。
+
+缺点：每次生产不同的类则需要创建新的工厂。
+
+Factory
+{
+	public Product createProduct();
+}
+
+FactoryA
+{
+	public Product createProduct()
+	{
+		return new ProductA();
+	}
+}
+
+
+抽象工厂模式：
+1：抽象的产品类。
+2：具体的产品类。
+3：抽象的工厂类。
+4：具体的工厂类。
+
+缺点：如果还有除了gift以外的类，则需要修改。
+
+Factory
+{
+	public Product createProduct();
+	public Gift createGift();
+}
+
+Factory
+{
+	public Product createProduct()
+	{
+		return new ProductA();
+	}
+
+	public Gift createGift()
+	{
+		return new GiftA();
+	}
+}
+
+
+
+
+
+

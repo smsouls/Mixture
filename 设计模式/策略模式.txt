@@ -1,0 +1,18 @@
+策略模式
+
+应用场景：一个问题有多个解决方案或者稍有区别的操作时候。
+
+比如加减乘除的算法。
+
+1:最常用的解决办法是使用 if-else 或者 switch-case。
+对于简单的方案可以采用
+
+
+2:使用策略模式
+UML类图
+Calc:进行计算操作的上下文环境
+Strategy:计算操作的抽象
+AddStrategy、SubStrategy、MultiStrategy、DivStrategy:具体的加减乘除算法的实现
+
+
+

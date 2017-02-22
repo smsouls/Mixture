@@ -1,0 +1,55 @@
+装饰者模式
+
+
+使用场景：动态的给一个对象添加一些额外的职责（这些职责通常和已经有的是同一个维度的）
+心法：在继承的时候将加法变成了乘法。
+比如例子里面的给所有的程序员添加会设计模式的技能
+
+四个元素：
+1：Component (抽象构件)
+2：ConcreteComponent (具体构件)
+3: Decorator (抽象装饰类)
+4：ConcreteDecorator (具体装饰类)
+
+interface Component
+{
+	void skills();
+}
+
+class iOSPro implements Component
+{
+	void skills()
+	{
+		"ios"
+	}
+}
+
+class phpPro implements Component
+{
+	void skills()
+	{
+		"php"
+	}
+}
+
+class Decorate implements Component
+{
+	void setComponent(Component component)
+	{
+		component = component
+	}
+
+	void skills()
+	{
+		component.skills()
+	}
+}
+
+class PatternDecorator extends Decorate
+{
+	void skills()
+	{
+		super.skills();
+		"pattern"
+	}
+}

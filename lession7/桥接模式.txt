@@ -1,0 +1,58 @@
+桥接模式
+
+应用场景：不同维度的组合。
+至于哪个当成抽象类，哪个当成接口，这要看主动和被动。主动的作为抽象类，被动的作为接口。
+比如在手机上玩手机。
+在某个地区吃饭。
+
+参与角色：
+1.Abstraction (抽象类)
+2.RefinedAbstraction (扩充抽象类)
+3.Implementor (实现类接口)
+4.ConcreteImplementor (具体实现类接口)
+
+Implementor
+public interface Restaurant
+{
+	public String taste();
+}
+
+ConcreteImplementor
+public class XiaoNanGuo implements Restaturant
+{
+	public String taste()
+	{
+		return "红烧肉比较好吃"
+	}
+}
+
+public class WaiPojia implements Restaturant
+{
+	public String taste()
+	{
+		return "比较肉比较一般"
+	}
+}
+
+Abstraction
+public abstract class AbstractCityArea
+{
+	protected Restaurant restaurant;
+
+	public AbstractCityArea(Restaurant restaurant)
+	{
+		this.restaurant = restaurant;
+	}
+
+	public abstract void commentTaste();
+}
+
+RefinedAbstraction
+public class NanjingRestaurant extends AbstractCityArea
+{
+	public NanjingRestaurant(Restaurant restaurant)
+	{
+		super(restaurant);
+	}
+}
+

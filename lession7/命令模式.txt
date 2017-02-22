@@ -1,0 +1,84 @@
+命令模式
+
+应用场景：把发出命令的责任和执行命令的责任分隔开，委派给不同的对象。
+
+每一个命令都是一个操作：请求的一方发出请求要求执行一个操作：
+接收的一方收到请求，并执行操作。
+命令模式允许请求一方和接收的一方独立开来。	
+
+角色：
+1.Command:抽象的命令
+2.ConcreateCommand:具体的命令
+3.Invoker:负责去调用组合不同命令和调用不同命令的
+4.Receiver:负责具体实施方法
+
+public class AudioPlayer
+{
+	public void play()
+	{
+		"播放"
+	}
+
+	public void rewind()
+	{
+		"倒带"
+	}
+
+	public void stop()
+	{
+		"停止"
+	}
+}
+
+
+public interface Command
+{
+	public void execute();
+}
+
+public class PlayCommand implements Command
+{
+	private AudioPlayer myAudio;
+
+	public PlayCommand(AudioPlayer audioPlayer)
+	{
+		myAudio = audioPlayer;
+	}
+
+	public void execute()
+	{
+		myAudio.play()
+	}
+}
+
+public class StopCommand implements Command
+{
+	private AudioPlayer myAudio;
+
+	public StopCommand(AudioPlayer audioPlayer)
+	{
+		myAudio = audioPlayer;
+	}
+
+	public void execute()
+	{
+		myAudio.play();
+	}
+
+}
+
+public class Keypad
+{
+	private Command playCommand;
+	private Command stopCommand;
+
+	public void setPlayCommand(Command playCommand)
+	{
+		playCommand = playCommand;
+	}
+
+	public void setStopCommand(Command stopCommand)
+	{
+		stopCommand = stopCommand;
+	}
+}

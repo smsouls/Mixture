@@ -1,0 +1,44 @@
+责任链模式
+
+使用场景：
+一个请求可以被多个处理者处理或者处理者未明确时
+
+角色：
+1.Handler:抽象处理者
+2.ConcreteHandler:具体处理者
+
+如一个报销，根据金额的不同，选择不同的处理人
+
+
+public abstract class Handler
+{
+	protected Handler successor; //设置上一级的负责人
+
+	public abstract void handleRequest();
+
+	public Handler gtSuccessor()
+	{
+		return successor;
+	}
+
+	public void setSuccessor(Handler successor)
+	{
+		this.successor = successor;
+	}
+}
+
+public ConcreteHandler extends Handler
+{
+	void handleRequest()
+	{
+		if ()
+		{
+
+		}
+		else
+		{
+			successor.handleRequest;
+		}
+	}
+}
+

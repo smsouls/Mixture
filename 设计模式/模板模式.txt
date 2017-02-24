@@ -1,0 +1,36 @@
+模板模式
+
+使用场景：
+一次性实现算法的不变的部分，具体的实现交给子类去实现
+
+角色：
+1.AbstractClass:抽象的原语操作
+2.ConcreteClass:具体的原语操作
+
+
+abstract class AbstractClass
+{
+	void absMethod();
+	void hookMethod()
+	{
+
+	}
+
+	void concreteMethod()
+	{
+
+	}
+
+	void templateMethod()
+	{
+		absMethod();
+		hookMethod();
+		concrteMethod();
+	}
+}
+
+ConcreteClass extends abstract
+{
+	
+}
+

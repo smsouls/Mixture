@@ -1,0 +1,72 @@
+迭代器模式
+
+提供一种方法访问一个容器对象中各个元素，而又不需要暴露对象的内部细节。
+
+角色：
+1.Iterator:抽象迭代器
+2.ConcreteIterator:具体迭代器
+3.Aggregate:抽象聚合类
+4.ConcreteAggregate:具体聚合类
+
+
+interface Iterator
+{
+	public Object next();
+	public boolean hasNext();
+	public void add();
+	public void remove();
+}
+
+class ConcretIterator implements Iterator
+{
+	private List list = new ArrayList();
+	private int cursor = 0;
+
+	public ConcreteInterator(List list)
+	{
+		this.list = list;
+	}
+
+	public boolean hasNext()
+	{
+		if (cursor == list.size())
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	public Object next()
+	{
+		Object obj = null;
+
+		if (this.hasNext)
+		{
+			obj = this.list.get(cursor++);
+		}
+
+		return obj;
+	}
+}
+
+interface Aggregate
+{
+	public void add(Object obj);
+	public void remove(Object obj);
+	public Iterator iterator();
+}
+
+class ConcreteAggregate implements Aggregate
+{
+	private List list = new ArrayList();
+	public void add(Object obj)
+	{
+		list.add(obj);
+	}
+
+	pubic Iterator iterator()
+	{
+		return new ConcreteIterator(list);
+	}
+}

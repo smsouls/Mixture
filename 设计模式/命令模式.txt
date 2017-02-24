@@ -12,6 +12,8 @@
 3.Invoker:负责去调用组合不同命令和调用不同命令的
 4.Receiver:负责具体实施方法
 
+
+//相当于receiver
 public class AudioPlayer
 {
 	public void play()
@@ -30,12 +32,13 @@ public class AudioPlayer
 	}
 }
 
-
+//Command
 public interface Command
 {
 	public void execute();
 }
 
+//ConcreteCommand
 public class PlayCommand implements Command
 {
 	private AudioPlayer myAudio;
@@ -51,6 +54,7 @@ public class PlayCommand implements Command
 	}
 }
 
+//ConcreteCommand
 public class StopCommand implements Command
 {
 	private AudioPlayer myAudio;
@@ -67,6 +71,7 @@ public class StopCommand implements Command
 
 }
 
+//Invoker
 public class Keypad
 {
 	private Command playCommand;
@@ -80,5 +85,11 @@ public class Keypad
 	public void setStopCommand(Command stopCommand)
 	{
 		stopCommand = stopCommand;
+	}
+
+	public void action()
+	{
+		playCommand.execute();
+		stopCommand.execute();
 	}
 }

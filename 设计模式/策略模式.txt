@@ -2,6 +2,11 @@
 
 应用场景：一个问题有多个解决方案或者稍有区别的操作时候。
 
+角色：
+1.Strategy:抽象的策略类
+2.ConcreteStrategy:具体的实现的策略类
+3.Context
+
 比如加减乘除的算法。
 
 1:最常用的解决办法是使用 if-else 或者 switch-case。
@@ -13,6 +18,44 @@ UML类图
 Calc:进行计算操作的上下文环境
 Strategy:计算操作的抽象
 AddStrategy、SubStrategy、MultiStrategy、DivStrategy:具体的加减乘除算法的实现
+
+
+interface Strategy
+{
+	void doSomething();
+}
+
+class ConcreteStrategyA()
+{
+	void doSomething()
+	{
+		"策略A"
+	}
+}
+
+class ConcreteStrategyB()
+{
+	void doSomething()
+	{
+		"策略B"
+	}
+}
+
+class Context
+{
+	Strategy strategy;
+
+	public Context(Strategy strategy)
+	{
+		strategy = strategy;
+	}
+
+	void excute()
+	{
+		strategy.doSomething();
+	}
+}
+
 
 
 

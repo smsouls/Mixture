@@ -1,0 +1,52 @@
+备忘录模式
+
+使用场景：
+做备份，ctr+z
+
+角色：
+1.Originator:发起人
+2.Memento:备忘录
+3.Caretaker:管理角色
+
+class Originator
+{
+	private String state1 = "";
+	private String state2 = "";
+
+	public String getState1()
+	{
+		return state1;
+	}
+
+	public String getState2()
+	{
+		return state2;
+	}
+
+	public Memento createMemento()
+	{
+		new Memento(BeanUtils.backupProp(this));
+	}
+
+	public void restoreMemento(Memento memento)
+	{
+		BeanUtils.restoreProp(this, memento.getStateMap());
+	}
+}
+
+class Mementto
+{
+	private Map<String, Object> stateMap;
+	public Memento(Map<String, OBject> map)
+	{
+		this.stateMap = map;
+	}
+
+	public Map<String, Object> getStateMap()
+	{
+		return stateMap;
+	}
+
+
+}
+

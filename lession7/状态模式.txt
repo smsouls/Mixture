@@ -1,0 +1,49 @@
+状态模式
+
+使用环境：一个对象的行为取决于它的状态，并且它必须在运行时刻根据状态改变它的行为。
+代码中包含大量与对象状态有关的条件语句。
+
+
+角色：
+1.Context:环境类
+2.State:抽象状态类
+3.ConcreteState:具体状态类
+
+环境类在决定是什么状态的时候可能还会用到if，else但是决定了是什么状态以后里面的复杂
+操作就直接放到具体的状态类里面去执行了。
+
+public class Context
+{
+	State state;
+
+	public void setState(State state)
+	{
+		state = state;
+	}
+
+	void request(String sampleParameter)
+	{
+		state.handle(sampleParameter);
+	}
+}
+
+public interface State
+{
+	public void handle(String sampleParameter);
+}
+
+public class ConcreteStateA implements State
+{
+	public void handle(String sampleParameter)
+	{
+		"ConcreteStateA handle sampleParameter";
+	}
+}
+
+public class ConcreteStateB implements State
+{
+	public void handle(String sampleParameter)
+	{
+		"ConcreteStateB handle sampleParameter";
+	}
+}

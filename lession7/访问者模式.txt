@@ -1,0 +1,41 @@
+访问者模式
+
+角色：
+1.Visitor:抽象访问者
+2.ConcreteVisitor:具体访问者
+3.Element:抽象节点	
+4.ConcreteElement:具体节点
+5.ObjectStructure:结构对象
+
+public interface Bill
+{
+	void accept(AccountBookViewer viewer);
+}
+
+public class ConsumeBill implements Bill
+{
+	private double amount;
+	private String item;
+
+	public ConsumeBill(double amount, String item)
+	{
+		super();
+		this.amount = amount;
+		this.item = item;
+	}
+
+	public void accept(AccountBookViewer viewer)
+	{
+		viewer.view(this);
+	}
+
+	public double getAmount()
+	{
+		return amount;
+	}
+
+	public String getItem()
+	{
+		return item;
+	}
+}

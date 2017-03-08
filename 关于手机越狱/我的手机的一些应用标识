@@ -1,0 +1,34 @@
+/private/var/containers/Bundle/Application/4AFE1E01-5CA1-42A1-9D93-F1D059291A39/yalu102.app
+
+[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0]
+
+security find-identity -v -p codesigning
+
+codesign --force --verify --verbose --sign "iPhone Developer: xxx xxxx (xxxxxxxxxx)" dumpdecrypted.dylib
+
+
+
+
+/var/mobile/Containers/Data/Application/79DE543E-923B-42DA-BD07-C1C88CCEA9D8/Documents/
+
+
+
+DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib /private/var/containers/Bundle/Application/7ACC97A2-6897-4F9D-B1CD-669D4800BB50/WeChat.app/WeChat
+
+tar -czf - debugserver | ssh -p 2222 root@localhost 'tar -xzf - -C /usr/bin/'
+
+ssh -p 2222 root@localhost 'tar czpf - /Developer/usr/bin/debugserver' | tar xzpf - -C /Users/xiaopengyou/Desktop
+
+ssh -p 2222 root@localhost 'tar czpf - /private/var/containers/Bundle/Application/4AFE1E01-5CA1-42A1-9D93-F1D059291A39/yalu102.app' | tar xzpf - -C /Users/xiebin/Desktop/gcc 
+
+xiaopengyoude-iPhone:~ root# debugserver *:19999 -a WeChat
+debugserver-@(#)PROGRAM:debugserver  PROJECT:debugserver-360.0.26.1
+ for arm64.
+Attaching to process WeChat...
+Listening to port 19999 for a connection from *...
+
+(lldb) process connect connect://deviceIP:19999
+error: invalid host string: 'deviceIP'
+
+(lldb) process connect connect://192.168.205.75:1999
+error: Connection refused

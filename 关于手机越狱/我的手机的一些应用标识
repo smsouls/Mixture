@@ -1,16 +1,40 @@
-/private/var/containers/Bundle/Application/4AFE1E01-5CA1-42A1-9D93-F1D059291A39/yalu102.app
 
-[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0]
+###### 进行dumpdecrypted脱壳 ######
 
+生成dumpdecrypted.dylib并进行签名
 security find-identity -v -p codesigning
-
 codesign --force --verify --verbose --sign "iPhone Developer: xxx xxxx (xxxxxxxxxx)" dumpdecrypted.dylib
 
+获取需要进行脱壳的Documents目录
+cycript -p WeChat
+[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask][0]
+
+将dumpdecrypted.dylib导入Documents目录
+tar -czf - dumpdecrypted.dylib | ssh -p 2222 root@localhost 'tar -xzf - -C /var/mobile/Containers/Data/Application/ACBABD23-BE9F-4A11-B525-285C40BCEAE7/Documents/'
+
+生成脱壳的文件
+DYLD_INSERT_LIBRARIES=/path/to/dumpdecrypted.dylib /path/to/executable
+DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib /var/containers/Bundle/Application/D88C38E2-09F7-4CEE-A30D-2BF7F1529856/WeChat.app/WeChat
+
+将WeChat.decrypted导出
+ssh -p 2222 root@localhost 'tar czpf - /var/mobile/Containers/Data/Application/ACBABD23-BE9F-4A11-B525-285C40BCEAE7/Documents/WeChat.decrypted' | tar xzpf - -C /Users/xiebin/Desktop/iosDe/wechat/
 
 
+###### 进行dumpdecrypted脱壳 ######
 
-/var/mobile/Containers/Data/Application/79DE543E-923B-42DA-BD07-C1C88CCEA9D8/Documents/
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+###### 进行lldb注入调试 ######
+
+debugserver *:19999 -a WeChat
+lldb
+process connect connect://192.168.205.75:19999
+image list -o -f
+
+连接成功以后输入c，否则是单步调试进程卡死
+br s -a '0x0000000100034000+0x0000000101dcc5fc'
+
+###### 进行lldb注入调试 ######
 
 
 DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib /private/var/containers/Bundle/Application/7ACC97A2-6897-4F9D-B1CD-669D4800BB50/WeChat.app/WeChat
@@ -30,5 +54,5 @@ Listening to port 19999 for a connection from *...
 (lldb) process connect connect://deviceIP:19999
 error: invalid host string: 'deviceIP'
 
-(lldb) process connect connect://192.168.205.75:1999
+(lldb) process connect connect://192.168.205.75:19999
 error: Connection refused

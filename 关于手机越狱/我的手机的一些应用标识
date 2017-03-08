@@ -32,10 +32,12 @@ process connect connect://192.168.205.75:19999
 image list -o -f
 
 连接成功以后输入c，否则是单步调试进程卡死
-br s -a '0x0000000100034000+0x0000000101dcc5fc'
+br s -a '0x0000000000034000+0x0000000101dcc5fc'
+
 
 ###### 进行lldb注入调试 ######
 
+102806850
 
 DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib /private/var/containers/Bundle/Application/7ACC97A2-6897-4F9D-B1CD-669D4800BB50/WeChat.app/WeChat
 

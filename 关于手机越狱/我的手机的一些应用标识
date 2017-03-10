@@ -1,4 +1,16 @@
 
+###### 找到适当的UI层 ######
+
+ps aux | grep WeChat
+cycript -p 微信的pid
+UIApp.keyWindow.recursiveDescription().toString()
+[#0x14da3f000 nextResponder]
+
+###### 找到适当的UI层 ######
+
+
+
+
 ###### 进行dumpdecrypted脱壳 ######
 
 生成dumpdecrypted.dylib并进行签名
@@ -32,11 +44,28 @@ process connect connect://192.168.205.75:19999
 image list -o -f
 
 连接成功以后输入c，否则是单步调试进程卡死
-br s -a '0x0000000000034000+0x0000000101dcc5fc'
+br s -a '0x0000000000088000+0x0000000101dcc5fc'
+
+101dcc5fc  [BaseMsgContentViewController addMessageNode:layout:addMoreMsg:]
+102011f24 
+101ffd08c	[BaseMsgContentLogicController OnAddMsg:MsgWrap:]
+102806850
+10280637c
+
 
 
 ###### 进行lldb注入调试 ######
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+###### 进行tweak.xm编写 ######
+
+logify.pl /path/to/BaseMsgContentViewController.h > /out/path/to/Tweak.xm
+com.tencent.xin
+
+###### 进行tweak.xm编写 ######
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 102806850
 
 DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib /private/var/containers/Bundle/Application/7ACC97A2-6897-4F9D-B1CD-669D4800BB50/WeChat.app/WeChat

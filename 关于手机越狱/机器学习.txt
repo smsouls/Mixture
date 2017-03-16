@@ -83,5 +83,34 @@ enum { LINEAR, POLY, RBF, SIGMOID, PRECOMPUTED };
  SIGMOID: 神经元的非线性作用函数核函数(Sigmoid tanh)
  PRECOMPUTED：用户自定义核函数
 
+###### 使用libsvm的过程 ######
+https://github.com/cjlin1/libsvm
+将数据变换成SVM格式
+数据规范化(scale). 实际也可能在第一步一起做了。
+考虑使用RBF核
+使用交叉验证获取最优参数C和gamma
+使用参数C和gamma来训练整个训练集
+新来数据的测试
+
+进行训练的时候训练样本要用
+label index:value index:value
+如 1 1:1 2:2
+
+
+svm_type c_svc                      // 支持向量机类型
+kernel_type rbf                       //   核函数类型为RBF
+gamma 0.0769231                //   核函数的gamma值
+nr_class 2                               //  分类类数
+total_sv 132                           //   总的支持向量个数
+rho 0.424462                         //   支持向量机的判决函数的常量
+label 1 -1                                //   标签
+nr_sv 64 68                           //   与标签对应的支持向量个数，加起来为132
+SV                                          //   下面都是支持向量
+
+
+svm两个重要的参数：C、gamma
+C:惩罚系数，对误差的宽容度。C越高，说明越不能容忍出现误差，容易拟合。C越小，容易欠拟合。C过大或者过小，泛化能力变差。
+gamma:隐含地决定了数据映射到新的特征空间后分布，gamma越大，支持向量越少，gamma值越小，支持向量越多。
+
 
 

@@ -12,6 +12,7 @@ UIApp.keyWindow.recursiveDescription().toString()
 
 
 ###### 进行dumpdecrypted脱壳 ######
+class-dump -H WeChat.decrypted --arch arm64  -o output/
 
 生成dumpdecrypted.dylib并进行签名
 security find-identity -v -p codesigning

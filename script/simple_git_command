@@ -1,0 +1,37 @@
+切换分支 
+git checkout -b marys-feature master
+查看远端所有分支
+git branch -a  
+查看本地分支
+git branch
+
+
+如果github远端改变密码导致本地还是用默认的密码,导致连不上github
+git remote show origin
+然后在推送或者拉取就可以让你重新输入用户名密码
+git push or git pull
+
+
+pod的库存在的位置
+~/.cocoapods/repos
+
+
+微信的silk文件:     https://www.zhihu.com/question/47062923/answer/126775315
+
+目录文件	定义
+.gradle	gradle项目产生文件（自动编译工具产生的文件）
+.idea	IDEA项目文件（开发工具产生的文件）
+app	其中一个 module，复用父项目的设置，可与父项目拥有相同的配置文件
+build	自动构建时生成文件的地方
+gradle	自动完成 gradle 环境支持文件夹
+.gitignore	git源码管理文件
+build.gradle	gradle 项目自动编译的配置文件
+gradle.properties	gradle 运行环境配置文件
+gradlew	自动完成 gradle 环境的 linux mac 脚本，配合 gradle 文件夹使用
+gradlew.bat	自动完成 gradle 环境的 windows 脚本，配合 gradle 文件夹使用
+local.properties	Android SDK NDK 环境路径配置
+*.iml	IDEA 项目文件
+setting.gradle	gradle 项目的子项目包含文件
+
+
+[_inStream setProperty:NSStreamSocketSecurityLevelTLSv1 forKey:NSStreamSocketSecurityLevelKey];

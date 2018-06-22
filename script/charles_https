@@ -1,0 +1,6 @@
+
+
+
+以IOS为例，在Safri上打开Charles的根证书下载网址： chls.pro/ssl 。
+
+在进行ssh传输的时候,用的是默认私钥id_rsa,如果换了名字则需要使用ssh-add id_rsa(私钥)

@@ -16,6 +16,21 @@ pod的库存在的位置
 ~/.cocoapods/repos
 
 
+查看git工作目录状态
+git status
+贮存
+git stash
+显示贮存的数目
+git stash list
+从贮存建立新的分支
+git stash branch newBranch
+应用最新的贮存并且从栈中移走
+git stash pop
+选定特定的贮存
+git stash show -p stash@{0} | git apply -R
+
+
+
 微信的silk文件:     https://www.zhihu.com/question/47062923/answer/126775315
 
 目录文件	定义

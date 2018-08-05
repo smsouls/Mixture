@@ -49,4 +49,30 @@ local.properties	Android SDK NDK 环境路径配置
 setting.gradle	gradle 项目的子项目包含文件
 
 
-[_inStream setProperty:NSStreamSocketSecurityLevelTLSv1 forKey:NSStreamSocketSecurityLevelKey];
+#####新建一个项目如果要引入gitlab的一些操作########
+Git global setup
+git config --global user.name "谢斌"
+git config --global user.email "1527340081@qq.com"
+
+Create a new repository
+git clone git@gitlab.com:letsHappyTogether/HappyTogether_iOS.git
+cd HappyTogether_iOS
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+
+Existing folder
+cd existing_folder
+git init
+git remote add origin git@gitlab.com:letsHappyTogether/HappyTogether_iOS.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+Existing Git repository
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin git@gitlab.com:letsHappyTogether/HappyTogether_iOS.git
+git push -u origin --all
+git push -u origin --tags

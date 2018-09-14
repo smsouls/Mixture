@@ -10,6 +10,39 @@ git branch
 git remote show origin
 然后在推送或者拉取就可以让你重新输入用户名密码
 git push or git pull
+显示git global的配置
+~/.gitconfig
+显示某个具体项目的git的配置
+vi .git/config
+
+config的写法:
+[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = false
+        logallrefupdates = true
+        ignorecase = true
+        precomposeunicode = true
+[remote "origin"]
+        url = http://git.it.taikang.com/scm/sakura/sakura-ios.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+[http]
+        proxy = 10.136.130.53:808
+
+
+
+将一个work上传到git上面
+cd existing-project
+git remote set-url origin http://itw_xiebing@git.it.taikang.com/scm/mag/triton-ios.git
+git push -u origin --all
+git push origin --tags
+
+将本地的分支和远端的分支做映射:
+upstream/foo 为远端分支  foo为本地分支,如果当前分支就是foo则可以省略当前分支,否则需要使用当前分支
+
+it branch -u upstream/foo
+
+git branch -u upstream/foo foo
 
 
 pod的库存在的位置

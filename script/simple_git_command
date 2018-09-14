@@ -19,15 +19,21 @@ config的写法:
 [core]
         repositoryformatversion = 0
         filemode = true
-        bare = false
+        bare = false 
         logallrefupdates = true
         ignorecase = true
         precomposeunicode = true
 [remote "origin"]
-        url = http://git.it.taikang.com/scm/sakura/sakura-ios.git
+        url = xxxxx/triton-ios.git
         fetch = +refs/heads/*:refs/remotes/origin/*
-[http]
+[branch "master"]
+        remote = origin
+        merge = refs/heads/master
+
+[http] 
         proxy = 10.136.130.53:808
+
+postBuffer = 524288000  //第一次传输的时候可能因为文件太大传不上去
 
 
 
@@ -40,7 +46,7 @@ git push origin --tags
 将本地的分支和远端的分支做映射:
 upstream/foo 为远端分支  foo为本地分支,如果当前分支就是foo则可以省略当前分支,否则需要使用当前分支
 
-it branch -u upstream/foo
+git branch -u upstream/foo
 
 git branch -u upstream/foo foo
 

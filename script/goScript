@@ -18,4 +18,19 @@ mkdir -p $GOPATH/src/golang.org/x
 cd $GOPATH/src/golang.org/x
 git clone https://github.com/golang/net.git
 
+
 安装 mongodb 数据库,这种数据库相对其他的sql数据库比较面向对象,能和定义的数据结构打交道.
+
+brew services stop mongodb
+
+brew uninstall mongodb
+
+rm -rf /usr/local/var/mongodb/
+
+rm -rf ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
+
+rm -rf /usr/local/etc/mongod.conf
+
+brew install mongodb
+
+brew services start mongodb

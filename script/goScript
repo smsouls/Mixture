@@ -17,3 +17,5 @@ package golang.org/x/net/websocket: unrecognized import 类似的错误
 mkdir -p $GOPATH/src/golang.org/x
 cd $GOPATH/src/golang.org/x
 git clone https://github.com/golang/net.git
+
+安装 mongodb 数据库,这种数据库相对其他的sql数据库比较面向对象,能和定义的数据结构打交道.

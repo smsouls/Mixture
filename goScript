@@ -1,0 +1,19 @@
+
+配置go的环境
+vi ~/.bash_profile
+
+查看go的环境
+go env
+
+
+export GOPATH=~/Go
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+
+有时候进行 go get安装工具包的时候会出现错误
+
+package golang.org/x/net/websocket: unrecognized import 类似的错误
+
+mkdir -p $GOPATH/src/golang.org/x
+cd $GOPATH/src/golang.org/x
+git clone https://github.com/golang/net.git

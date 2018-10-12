@@ -43,3 +43,6 @@ sudo chown -R root:wheel /System/Library/Extensions/IOKitTest.kext
 sudo touch /System/Library/Extensions
 
 sudo kextload ../IOKitTest.kext
+
+
+sudo nginx -s stop && sudo nginx

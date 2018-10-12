@@ -34,3 +34,12 @@ rm -rf /usr/local/etc/mongod.conf
 brew install mongodb
 
 brew services start mongodb
+
+修改了nginx的port没有生效,命令行添加sudo nginx 就生效了
+
+
+加载驱动程序:
+sudo chown -R root:wheel /System/Library/Extensions/IOKitTest.kext
+sudo touch /System/Library/Extensions
+
+sudo kextload ../IOKitTest.kext

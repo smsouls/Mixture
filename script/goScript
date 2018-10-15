@@ -37,6 +37,18 @@ brew services start mongodb
 
 修改了nginx的port没有生效,命令行添加sudo nginx 就生效了
 
+//postgresql
+查看版本
+pg_ctl -V
+
+
+跑一个container
+docker run -d --name kong-database \
+              -p 5432:5432 \
+              -e "POSTGRES_USER=kong" \
+              -e "POSTGRES_DB=kong" \
+              postgres:9.4
+
 
 加载驱动程序:
 sudo chown -R root:wheel /System/Library/Extensions/IOKitTest.kext

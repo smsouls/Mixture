@@ -14,6 +14,8 @@ git push or git pull
 ~/.gitconfig
 显示某个具体项目的git的配置
 vi .git/config
+将本地的分支和远端的分支对应
+git branch --set-upstream-to remotebranchname
 
 config的写法:
 [core]

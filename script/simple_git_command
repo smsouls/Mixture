@@ -5,6 +5,9 @@ git branch -a
 查看本地分支
 git branch
 
+解决.gitignore不生效的问题
+git rm -r --cached .
+
 
 如果github远端改变密码导致本地还是用默认的密码,导致连不上github
 git remote show origin
